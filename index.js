@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+// cors
 require('dotenv').config(); // Load .env variables
 
 const app = express();
@@ -7,9 +8,7 @@ const app = express();
 // Middleware to parse JSON
 app.use(express.json());
 
-// // Example route import (optional)
-// const userRoutes = require('./routes/userRoutes');
-// app.use('/users', userRoutes);
+
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
