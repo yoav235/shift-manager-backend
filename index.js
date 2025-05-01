@@ -1,9 +1,11 @@
-const express = require('express');
-const mongoose = require('mongoose');
-import userRoutes from "./users/UserRoutes";
+import express from 'express';
+import mongoose from 'mongoose';
+import userRoutes from "./users/UserRoutes.js";
+import shiftRouter from "./shifts/ShiftsRoutes.js";
+import dotenv from 'dotenv';
 
 // cors
-require('dotenv').config({path: "./environments/.env.dev" }); // Load .env.prod variables
+dotenv.config({path: "./environment/.env.dev" }); // Load .env.prod variables
 
 const app = express();
 
@@ -14,7 +16,7 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(process.env.DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -23,10 +25,11 @@ mongoose.connect(process.env.MONGO_URI, {
 
 
 app.use("/api/users", userRoutes)
+app.use("/api/shifts", shiftRouter)
 
 
 // Start server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 27017;
 app.listen(PORT, () => {
     console.log(`🚀 Server is running on http://localhost:${PORT}`);
 });

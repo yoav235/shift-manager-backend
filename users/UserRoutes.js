@@ -1,6 +1,6 @@
 import express from 'express';
-import UserSchemaModel from "./UserSchema";
-import { errorResponseObject, successResponseObject } from "../utils/responseObjects";
+import UserSchemaModel from "./UserSchema.js";
+import { errorResponseObject, successResponseObject } from "../utils/responseObjects.js";
 
 const userRouter = express.Router();
 
@@ -44,15 +44,30 @@ userRouter.post('/addUser', async (req, res) => {
 
 userRouter.delete('/deleteUser', async (req, res) => {
     try {
-        const userId = req.body.email.type;
-        const result = await UserSchemaModel.findByIdAndDelete(userId);
+        const { email } = req.body;                         // make sure body-parser is enabled
+        const result = await UserSchemaModel.findOneAndDelete({ email });  // <-- here
         if (result) {
-            res.status(200).json(successResponseObject("User deleted successfully", result));
+            res.status(200).json(successResponseObject('User deleted', result));
         } else {
-            res.status(400).json(errorResponseObject("Failed to delete user"));
+            res.status(404).json(errorResponseObject('User not found'));
         }
     } catch (err) {
-        res.status(400).json(errorResponseObject("Failed to delete user", err.message));
+        res.status(400).json(errorResponseObject('Failed to delete user', err.message));
+    }
+});
+
+userRouter.post('/login', async (req, res) => {
+    try{
+        const user = req.body;
+        const foundUser = await UserSchemaModel.findOne({ email: user.email });
+        const isPasswordValid = await foundUser.comparePassword(user.password);
+        if (!foundUser || !isPasswordValid) {
+            res.status(401).json(errorResponseObject("Invalid email or password"));
+            return;
+        }
+        res.status(200).json(successResponseObject("User logged in successfully", foundUser));
+    } catch (err) {
+        res.status(400).json(errorResponseObject("Failed to login", err.message));
     }
 });
 
