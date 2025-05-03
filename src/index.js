@@ -21,7 +21,7 @@ app.use(cors({
     allowedHeaders: ['Content-Type'], // Specify allowed headers
 }));
 
-app.options('/*', cors());
+app.options('/{*any}', cors());
 
 // Connect to MongoDB
 mongoose.connect(process.env.DB_URI, {
