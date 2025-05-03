@@ -14,14 +14,14 @@ const app = express();
 app.use(express.json({limit: '10mb'}) ); // Adjust as needed
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
-// Use the CORS middleware
-app.use(cors({
-    origin: "*",
-    methods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'], // Specify allowed methods
-    allowedHeaders: ['Content-Type'], // Specify allowed headers
-}));
-// app.use(cors());
-app.options('*', cors());
+// // Use the CORS middleware
+// app.use(cors({
+//     origin: "*",
+//     methods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'], // Specify allowed methods
+//     allowedHeaders: ['Content-Type'], // Specify allowed headers
+// }));
+// // app.use(cors());
+// app.options('*', cors());
 
 // Connect to MongoDB
 mongoose.connect(process.env.DB_URI, {
