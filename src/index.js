@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 
 // cors
-dotenv.config({path: "./environment/.env.dev" }); // Load .env.prod variables
+dotenv.config({path: "./environment/.env.prod" }); // Load .env.prod variables
 
 const app = express();
 
