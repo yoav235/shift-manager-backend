@@ -2,11 +2,12 @@ import express from 'express';
 import mongoose from 'mongoose';
 import userRoutes from "./users/UserRoutes.js";
 import shiftRouter from "./shifts/ShiftsRoutes.js";
+import migrationRouter from "./migrations/migrationRoutes.js";
 import dotenv from 'dotenv';
 import cors from 'cors';
 
 // cors
-dotenv.config({path: "./environment/.env.prod" }); // Load .env.prod variables
+dotenv.config({path: "./environments/.env.dev" }); // Load .env.prod variables
 
 const app = express();
 
@@ -34,6 +35,7 @@ mongoose.connect(process.env.DB_URI, {
 
 app.use("/api/users", userRoutes)
 app.use("/api/shifts", shiftRouter)
+app.use("/api/migrations", migrationRouter)
 
 
 // Start server
