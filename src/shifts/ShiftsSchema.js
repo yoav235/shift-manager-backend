@@ -1,12 +1,14 @@
 import mongoose from 'mongoose'
 
 const shiftSchema = new mongoose.Schema({
-    email: {
+    shiftId: {
         type: String,
         required: true,
-        unique: true,
-        lowercase: true,
-        trim: true
+        unique: true
+    },
+    name:{
+        type: String,
+        required: true
     },
     shifts: {
         sunday: []
