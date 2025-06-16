@@ -3,7 +3,7 @@ import ShiftsSchemaModel from "../shifts/ShiftsSchema.js";
 
 const mockShifts = [
     {
-        shiftId: "6812cc401688c01721b89d5d",
+        shiftId: "68167334caa9bed5412ca0fd",
         name: "Yoav",
         shifts: {
             sunday: ["middle", "evening", "night", "morning"],
@@ -16,7 +16,7 @@ const mockShifts = [
         }
     },
     {
-        shiftId: "684dcc90e26e0fedbc8420c4",
+        shiftId: "6849e427f98b65e34d4b508b",
         name: "Alice",
         shifts: {
             sunday: ["middle"],
@@ -29,7 +29,7 @@ const mockShifts = [
         }
     },
     {
-        shiftId: "684dcc90e26e0fedbc8420c6",
+        shiftId: "6849e427f98b65e34d4b508d",
         name: "Bob",
         shifts: {
             sunday: ["night"],
@@ -42,7 +42,7 @@ const mockShifts = [
         }
     },
     {
-        shiftId: "684dcc90e26e0fedbc8420c8",
+        shiftId: "6849e428f98b65e34d4b508f",
         name: "Carol",
         shifts: {
             sunday: [],
@@ -55,7 +55,7 @@ const mockShifts = [
         }
     },
     {
-        shiftId: "684dcc90e26e0fedbc8420ca",
+        shiftId: "6849e428f98b65e34d4b5091",
         name: "Dave",
         shifts: {
             sunday: ["middle", "evening", "morning", "night"],
@@ -68,7 +68,7 @@ const mockShifts = [
         }
     },
     {
-        shiftId: "684dcc90e26e0fedbc8420cc",
+        shiftId: "6849e428f98b65e34d4b5093",
         name: "Eve",
         shifts: {
             sunday: ["night", "middle", "morning", "evening"],
@@ -81,7 +81,7 @@ const mockShifts = [
         }
     },
     {
-        shiftId: "684dcc90e26e0fedbc8420ce",
+        shiftId: "6849e429f98b65e34d4b5095",
         name: "Frank",
         shifts: {
             sunday: ["evening", "middle", "night"],
@@ -94,7 +94,7 @@ const mockShifts = [
         }
     },
     {
-        shiftId: "684dcc90e26e0fedbc8420d0",
+        shiftId: "6849e429f98b65e34d4b5097",
         name: "Grace",
         shifts: {
             sunday: ["middle", "morning", "night", "evening"],
@@ -107,7 +107,7 @@ const mockShifts = [
         }
     },
     {
-        shiftId: "684dcc90e26e0fedbc8420d2",
+        shiftId: "6849e42af98b65e34d4b5099",
         name: "Heidi",
         shifts: {
             sunday: [],
