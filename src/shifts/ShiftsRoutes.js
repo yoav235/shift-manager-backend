@@ -9,11 +9,25 @@ shiftRouter.get('/hello', (req, res) => {
     res.send('Hello, World!!!!');
 });
 
+
+shiftRouter.get('getAllShifts', (req, res) => {
+    try {
+        const shifts = ShiftSchemaModel.find({})
+        if (!shifts) {
+            res.status(404).send('No shifts found');
+        }
+        res.status(200).json(successResponseObject("got all shifts", shifts));
+    }
+    catch (error) {
+        res.status(400).send(errorResponseObject("failed to get all shifts because: ", error.message));
+    }
+})
+
 shiftRouter.post('/getShifts', async (req, res) => {
     const shifts = req.body;
-    console.log("get shifts for ", shifts.email);
+    console.log("get shifts for ", shifts._id);
     try {
-        const shiftsDB = await ShiftSchemaModel.find({ email: shifts.email });
+        const shiftsDB = await ShiftSchemaModel.find({ shiftId: shifts._id });
         console.log("All shifts: ", shiftsDB);
         res.status(200).json(successResponseObject("All shifts", shiftsDB));
     } catch (err) {
