@@ -1,7 +1,7 @@
 import express from 'express';
 import ShiftSchemaModel from "./ShiftsSchema.js";
 import { errorResponseObject, successResponseObject } from "../utils/responseObjects.js";
-import shiftsSchemaModel from "./ShiftsSchema.js";
+import ShiftsSchemaModel from "./ShiftsSchema.js";
 
 const shiftRouter = express.Router();
 
@@ -38,7 +38,7 @@ shiftRouter.post('/getShifts', async (req, res) => {
 shiftRouter.post('/addShift', async (req, res) => {
     try {
         const shiftData = req.body;
-        shiftsSchemaModel.findOneAndReplace({email: shiftData.userId}, shiftData, {upsert: true})
+        ShiftsSchemaModel.findOneAndReplace({email: shiftData.userId}, shiftData, {upsert: true})
         const newShift = new ShiftSchemaModel(shiftData);
         const result = await newShift.save();
         if (result) {

@@ -1,4 +1,4 @@
-import shiftsSchemaModel from "../shifts/ShiftsSchema.js";
+import ShiftsSchemaModel from "../shifts/ShiftsSchema.js";
 
 
 const mockShifts = [
@@ -127,7 +127,7 @@ export default async function migrate(req, res) {
         console.log("Starting Mock Shifts Migration...");
 
         for (const shift of mockShifts) {
-            const newShift = new shiftsSchemaModel(shift);
+            const newShift = new ShiftsSchemaModel(shift);
             console.log("Inserting shift:", newShift);
             await newShift.save();
         }
