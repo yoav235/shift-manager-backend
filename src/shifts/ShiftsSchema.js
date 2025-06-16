@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const shiftSchema = new mongoose.Schema({
     shiftId: {
         type: String,
-        required: true,
+        // required: true,
         unique: true
     },
     name:{
