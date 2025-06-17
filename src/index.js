@@ -7,8 +7,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 
 // cors
-dotenv.config({path: "./environment/.env.prod" }); // Load .env.prod variables
-
+dotenv.config({ path: `./environment/.env.${process.env.NODE_ENV || 'prod'}` }); // Load environment variables dynamically
 const app = express();
 
 // Middleware to parse JSON
