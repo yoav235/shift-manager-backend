@@ -58,8 +58,7 @@ userRouter.delete('/deleteUser', async (req, res) => {
 
 userRouter.post('/login', async (req, res) => {
     try{
-        const data = req.body;
-        const user = new UserSchemaModel({email: data.email, password: data.password, isManager: data.isManager});
+        const user = req.body;
         console.log("User login attempt: ", user);
         const foundUser = await UserSchemaModel.findOne({ email: user.email });
         console.log("Found user: ", foundUser);
