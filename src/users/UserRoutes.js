@@ -60,6 +60,7 @@ userRouter.post('/login', async (req, res) => {
     try{
         const data = req.body;
         const user = new UserSchemaModel({email: data.email, password: data.password, isManager: data.isManager});
+        console.log("User password attempt: ", user.password);
         const foundUser = await UserSchemaModel.findOne({ email: user.email });
         const isPasswordValid = await foundUser.comparePassword(user.password);
         if (!foundUser || !isPasswordValid) {
