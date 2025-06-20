@@ -45,7 +45,7 @@ const mockEmployees = [
 
 
 
-export default async function migrate(req, res) {
+export default async function migrate() {
     try {
         // Save users one by one to trigger pre-save hook (for password hashing)
         for (const user of mockEmployees) {
@@ -53,10 +53,8 @@ export default async function migrate(req, res) {
             console.log(newUser);
             await newUser.save();
         }
-        res.status(200).json({ message: 'Mock employees inserted successfully.' });
         return {success: true}
     } catch (error) {
-        res.status(500).json({ message: 'Migration failed', error: error.message });
         return {success: false}
     }
 }

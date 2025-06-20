@@ -122,7 +122,7 @@ const mockShifts = [
 ];
 
 
-export default async function migrate(req, res) {
+export default async function migrate() {
     try {
         console.log("Starting Mock Shifts Migration...");
 
@@ -132,10 +132,8 @@ export default async function migrate(req, res) {
             await newShift.save();
         }
         console.log("Mock Shifts Migration completed successfully.");
-        res.status(200).json({ message: 'Mock shifts inserted successfully.' });
     } catch (error) {
         console.error("Error during Mock Shifts Migration:", error);
-        res.status(500).json({ message: 'Migration failed', error: error.message });
     }
 };
 
