@@ -62,6 +62,7 @@ userRouter.post('/login', async (req, res) => {
         const user = new UserSchemaModel({email: data.email, password: data.password, isManager: data.isManager});
         console.log("User password attempt: ", user.password);
         const foundUser = await UserSchemaModel.findOne({ email: user.email });
+        console.log("Found user: ", foundUser);
         const isPasswordValid = await foundUser.comparePassword(user.password);
         if (!foundUser || !isPasswordValid) {
             res.status(401).json(errorResponseObject("Invalid email or password"));
