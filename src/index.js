@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import userRoutes from "./users/UserRoutes.js";
 import shiftRouter from "./shifts/ShiftsRoutes.js";
+import scheduleRouter from "./schedule/ScheduleRoutes.js";
 import migrationRouter from "./migrations/migrationRoutes.js";
 import dotenv from 'dotenv';
 import cors from 'cors';
@@ -35,6 +36,7 @@ mongoose.connect(process.env.DB_URI, {
 app.use("/api/users", userRoutes)
 app.use("/api/shifts", shiftRouter)
 app.use("/api/migrations", migrationRouter)
+app.use("/api/schedule", scheduleRouter)
 
 
 // Start server

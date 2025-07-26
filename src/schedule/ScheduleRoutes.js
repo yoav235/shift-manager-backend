@@ -36,3 +36,5 @@ scheduleRouter.post('/addSchedule', async (req, res) => {
         res.status(400).json(errorResponseObject("Failed to create schedule", err.message));
     }
 });
+
+export default scheduleRouter;
