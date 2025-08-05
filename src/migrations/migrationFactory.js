@@ -1,5 +1,6 @@
 import mockEmployeesMigration from "./mockEmployeesMigration.js";
 import MockShiftsMigration from "./MockShiftsMigration.js";
+import SceduleMigartion from "./ScheduleMigration.js";
 
 
 
@@ -9,6 +10,8 @@ const MigrationFactory = async (migration) => {
             return mockEmployeesMigration;
         case 'MockShiftsMigration':
             return MockShiftsMigration;
+        case 'ScheduleMigration':
+            return SceduleMigartion;
         case 'test':
             return async (req, res) => {
                 console.log("Test migration executed");
