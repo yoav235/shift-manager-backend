@@ -1,6 +1,7 @@
 import express from 'express';
 import ScheduleModel from "./ScheduleSchema.js";
 import { errorResponseObject, successResponseObject } from "../utils/responseObjects.js";
+import {createSchedule} from "../utils/ScheduleMaker.js";
 
 
 const scheduleRouter = express.Router();
@@ -22,9 +23,9 @@ scheduleRouter.get('/getCurrentSchedules', async (req, res) => {
     }
 });
 
-scheduleRouter.post('/addSchedule', async (req, res) => {
+scheduleRouter.get('/addSchedule', async (req, res) => {
     try {
-        const scheduleData = req.body;
+        const scheduleData = createSchedule()
         const newSchedule = new ScheduleModel(scheduleData);
         const result = await newSchedule.save();
         if (result) {
