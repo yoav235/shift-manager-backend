@@ -25,8 +25,8 @@ scheduleRouter.get('/getCurrentSchedules', async (req, res) => {
 
 scheduleRouter.get('/addSchedule', async (req, res) => {
     try {
-        const scheduleData = createSchedule()
-        const newSchedule = new ScheduleModel(scheduleData);
+        // const scheduleData = await createSchedule()
+        const newSchedule = await createSchedule();
         const result = await newSchedule.save();
         if (result) {
             res.status(201).json(successResponseObject("Schedule created successfully", result));
