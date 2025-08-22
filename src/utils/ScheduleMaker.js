@@ -62,8 +62,10 @@ export async function createSchedule() {
     });
     for (const worker of allShifts) {
         for (const day of daysArray) {
+            let assigned = false
             for (const shift of shiftsArray) {
-                if (worker.shifts[day].includes(shift) && schedule.shifts[day][shift].length < 3) {
+                if (worker.shifts[day].includes(shift) && schedule.shifts[day][shift].length < 3 && !assigned) {
+                    assigned = true;
                     schedule.shifts[day][shift].push(worker.name);
                 }
             }
