@@ -86,25 +86,25 @@ export async function createSchedule() {
 
     return schedule;
 }
-console.log("environment variables loaded:", process.env.DB_URI);
-mongoose.connect(
-    process.env.DB_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
-    .then(async () => {
-        console.log("Connected to MongoDB");
-        try {
-            const schedule = await createSchedule();
-            console.log("Generated Schedule:", schedule["shifts"]);
-        } catch (error) {
-            console.error("Error creating schedule:", error);
-        } finally {
-            mongoose.disconnect();
-        }
-    })
-    .catch((err) => {
-        console.error("Failed to connect to MongoDB:", err);
-        process.exit(1);
-    });
+// console.log("environment variables loaded:", process.env.DB_URI);
+// mongoose.connect(
+//     process.env.DB_URI, {
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true,
+//     })
+//     .then(async () => {
+//         console.log("Connected to MongoDB");
+//         try {
+//             const schedule = await createSchedule();
+//             console.log("Generated Schedule:", schedule["shifts"]);
+//         } catch (error) {
+//             console.error("Error creating schedule:", error);
+//         } finally {
+//             mongoose.disconnect();
+//         }
+//     })
+//     .catch((err) => {
+//         console.error("Failed to connect to MongoDB:", err);
+//         process.exit(1);
+//     });
 
