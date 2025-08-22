@@ -64,9 +64,19 @@ export async function createSchedule() {
         for (const day of daysArray) {
             let assigned = false
             for (const shift of shiftsArray) {
-                if (worker.shifts[day].includes(shift) && schedule.shifts[day][shift].length < 3 && !assigned) {
-                    assigned = true;
-                    schedule.shifts[day][shift].push(worker.name);
+                if (worker.shifts[day].includes(shift) && !assigned) {
+                    if ((shift === "morning" || shift === "evening") && schedule.shifts[day][shift].length < 3) {
+                        assigned = true;
+                        schedule.shifts[day][shift].push(worker.name);
+                    }
+                    else if (shift === "night" && schedule.shifts[day][shift].length < 2) {
+                        assigned = true;
+                        schedule.shifts[day][shift].push(worker.name);
+                    }
+                    else if (shift === "middle" && schedule.shifts[day][shift].length < 1) {
+                        assigned = true;
+                        schedule.shifts[day][shift].push(worker.name);
+                    }
                 }
             }
         }
@@ -98,4 +108,3 @@ mongoose.connect(
         process.exit(1);
     });
 
-//todo - the same workers are in 2 or more shifts at the same day. fix it!
