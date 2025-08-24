@@ -38,7 +38,7 @@ scheduleRouter.post('/addSchedule', async (req, res) => {
     }
 });
 
-scheduleRouter.post('/generateSchedule', async (req, res) => {
+scheduleRouter.get('/generateSchedule', async (req, res) => {
     try {
         const generatedSchedule = await createSchedule();
         if (!generatedSchedule) {
