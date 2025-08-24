@@ -23,10 +23,10 @@ scheduleRouter.get('/getCurrentSchedules', async (req, res) => {
     }
 });
 
-scheduleRouter.get('/addSchedule', async (req, res) => {
+scheduleRouter.post('/addSchedule', async (req, res) => {
     try {
-        // const scheduleData = await createSchedule()
-        const newSchedule = await createSchedule();
+        const scheduleData = req.body;
+        const newSchedule = new ScheduleModel(scheduleData);
         const result = await newSchedule.save();
         if (result) {
             res.status(201).json(successResponseObject("Schedule created successfully", result));
@@ -35,6 +35,18 @@ scheduleRouter.get('/addSchedule', async (req, res) => {
         }
     } catch (err) {
         res.status(400).json(errorResponseObject("Failed to create schedule", err.message));
+    }
+});
+
+scheduleRouter.post('/generateSchedule', async (req, res) => {
+    try {
+        const generatedSchedule = await createSchedule();
+        if (!generatedSchedule) {
+            return res.status(500).json(errorResponseObject("Error generating schedule"));
+        }
+        res.status(200).json(successResponseObject("Schedule generated successfully", generatedSchedule));
+    } catch (err) {
+        res.status(400).json(errorResponseObject("Failed to generate schedule", err.message));
     }
 });
 
