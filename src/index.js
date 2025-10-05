@@ -17,7 +17,7 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 // Use the CORS middleware
 app.use(cors({
-    origin: "*",
+    origin: "http://localhost:3000",
     methods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'], // Specify allowed methods
     allowedHeaders: ['Content-Type'], // Specify allowed headers
 }));

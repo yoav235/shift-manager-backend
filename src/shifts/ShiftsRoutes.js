@@ -10,7 +10,7 @@ shiftRouter.get('/hello', (req, res) => {
 });
 
 
-shiftRouter.get('getAllShifts', (req, res) => {
+shiftRouter.get('/getAllShifts', (req, res) => {
     try {
         console.log("Get all Shifts");
         const shifts = ShiftSchemaModel.find({})
