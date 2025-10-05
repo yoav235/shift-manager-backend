@@ -1,6 +1,7 @@
 import express from 'express';
 import ScheduleModel from "./ScheduleSchema.js";
 import { errorResponseObject, successResponseObject } from "../utils/responseObjects.js";
+import {createSchedule} from "../utils/ScheduleMaker.js";
 
 
 const scheduleRouter = express.Router();
@@ -34,6 +35,18 @@ scheduleRouter.post('/addSchedule', async (req, res) => {
         }
     } catch (err) {
         res.status(400).json(errorResponseObject("Failed to create schedule", err.message));
+    }
+});
+
+scheduleRouter.get('/generateSchedule', async (req, res) => {
+    try {
+        const generatedSchedule = await createSchedule();
+        if (!generatedSchedule) {
+            return res.status(500).json(errorResponseObject("Error generating schedule"));
+        }
+        res.status(200).json(successResponseObject("Schedule generated successfully", generatedSchedule));
+    } catch (err) {
+        res.status(400).json(errorResponseObject("Failed to generate schedule", err.message));
     }
 });
 
