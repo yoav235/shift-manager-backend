@@ -13,7 +13,7 @@ shiftRouter.get('/hello', (req, res) => {
 shiftRouter.get('/getAllShifts', (req, res) => {
     try {
         console.log("Get all Shifts");
-        const shifts = ShiftSchemaModel.find({})
+        const shifts = await ShiftSchemaModel.find({}).lean();
         if (!shifts) {
             res.status(404).send('No shifts found');
         }
