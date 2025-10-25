@@ -20,13 +20,13 @@ const shiftSchema = new mongoose.Schema({
         , saturday: []
     },
     otherShiftHours: {
-        sunday: null,
-        monday: null,
-        tuesday: null,
-        wednesday: null,
-        thursday: null,
-        friday: null,
-        saturday: null
+        sunday: undefined,
+        monday: undefined,
+        tuesday: undefined,
+        wednesday: undefined,
+        thursday: undefined,
+        friday: undefined,
+        saturday: undefined
     }
 });
 
