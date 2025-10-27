@@ -39,11 +39,13 @@ shiftRouter.post('/getShifts', async (req, res) => {
 shiftRouter.post('/addShift', async (req, res) => {
     try {
         const shiftData = req.body;
-        ShiftsSchemaModel.findOneAndReplace({shiftId: shiftData.shiftId}, shiftData, {upsert: true})
-        const newShift = new ShiftSchemaModel(shiftData);
-        const result = await newShift.save();
+        const result = await ShiftsSchemaModel.findOneAndReplace(
+            {shiftId: shiftData.shiftId}, 
+            shiftData, 
+            {upsert: true, new: true}
+        );
         if (result) {
-            res.status(201).json(successResponseObject("Shift created successfully", result));
+            res.status(201).json(successResponseObject("Shift created/updated successfully", result));
         } else {
             res.status(400).json(errorResponseObject("Failed to create shift"));
         }
