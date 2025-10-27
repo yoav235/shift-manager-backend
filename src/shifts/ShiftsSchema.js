@@ -18,7 +18,8 @@ const shiftSchema = new mongoose.Schema({
         , thursday: []
         , friday: []
         , saturday: []
-    }
+    },
+
 });
 
 const ShiftsSchemaModel = mongoose.model('Shifts', shiftSchema, 'shifts');
