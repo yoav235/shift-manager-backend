@@ -28,7 +28,7 @@ shiftRouter.post('/getShifts', async (req, res) => {
     const shifts = req.body;
     console.log("get shifts for ", shifts._id);
     try {
-        const shiftsDB = await ShiftSchemaModel.find({ shiftId: shifts._id });
+        const shiftsDB = await ShiftSchemaModel.find({ shiftId: shifts.shiftId });
         console.log("All shifts: ", shiftsDB);
         res.status(200).json(successResponseObject("All shifts", shiftsDB));
     } catch (err) {
