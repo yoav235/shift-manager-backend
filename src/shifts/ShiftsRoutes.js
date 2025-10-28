@@ -40,7 +40,7 @@ shiftRouter.post('/addShift', async (req, res) => {
     try {
         const shiftData = req.body;
         const result = await ShiftsSchemaModel.findOneAndReplace(
-            {shiftId: shiftData.data.shiftId}, 
+            {shiftId: shiftData.shiftId}, 
             shiftData, 
             {upsert: true, new: true}
         );
