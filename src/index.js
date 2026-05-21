@@ -12,7 +12,7 @@ dotenv.config({ path: `./environment/.env.${process.env.NODE_ENV || 'prod'}` });
 const app = express();
 
 // Middleware to parse JSON
-app.use(express.json({limit: '10mb'}) ); // Adjust as needed
+app.use(express.json({ limit: '10mb' })); // Adjust as needed
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 // Use the CORS middleware

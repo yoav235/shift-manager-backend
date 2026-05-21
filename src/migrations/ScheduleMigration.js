@@ -53,15 +53,15 @@ const mockSchedule = {
 export default async function migrate() {
     try {
         console.log("Starting mock schedule migration...");
-        // Create a new schedule document
         const newSchedule = new ScheduleModel(mockSchedule);
         console.log("Creating new schedule:", newSchedule);
 
-        // Save the new schedule to the database
         await newSchedule.save();
 
         console.log("Mock schedule migration completed successfully.");
+        return { success: true };
     } catch (error) {
         console.error("Error during mock schedule migration:", error);
+        return { success: false, error: error.message };
     }
 }

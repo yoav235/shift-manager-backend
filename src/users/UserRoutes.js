@@ -25,7 +25,7 @@ userRouter.post('/addUser', async (req, res) => {
     try {
         const userData = req.body;
         const userDB = await UserSchemaModel.find();
-        if (userDB.find(user => user.email.type === userData.email.type)) {
+        if (userDB.find(user => user.email === userData.email)) {
             res.status(401).json(errorResponseObject("Username already exists"));
             return;
         }
@@ -57,7 +57,7 @@ userRouter.delete('/deleteUser', async (req, res) => {
 });
 
 userRouter.post('/login', async (req, res) => {
-    try{
+    try {
         const user = req.body;
         console.log("User login attempt: ", user);
         const foundUser = await UserSchemaModel.findOne({ email: user.email });
