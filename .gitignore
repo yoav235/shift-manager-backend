@@ -8,5 +8,6 @@
 .idea/shift-manager-backend.iml
 .idea/vcs.xml
 data_backup/shift-manager.users.csv
-environment/.env.dev
-environment/.env.prod
+environments/.env.dev
+environments/.env.prod
+
