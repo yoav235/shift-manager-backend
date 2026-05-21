@@ -1,11 +1,12 @@
 /node_modules/*
-.idea/.gitignore
 .idea/copilot.data.migration.agent.xml
 .idea/copilot.data.migration.ask.xml
 .idea/copilot.data.migration.ask2agent.xml
 .idea/copilot.data.migration.edit.xml
+.idea/jsLibraryMappings.xml
 .idea/modules.xml
 .idea/shift-manager-backend.iml
 .idea/vcs.xml
-environments/.env.dev
-environments/.env.prod
+data_backup/shift-manager.users.csv
+environment/.env.dev
+environment/.env.prod
