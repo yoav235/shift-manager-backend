@@ -49,7 +49,7 @@ Create environment files in the `environment/` directory:
 ### `environment/.env.dev` (Development)
 ```
 NODE_ENV=dev
-DB_URI=mongodb://localhost:27017/shift-manager
+DB_URI=<your-development-mongodb-uri>
 PORT=5000
 ```
 
